@@ -1,7 +1,8 @@
 pragma solidity 0.4.25;
 
 contract Bank{
-    int bal;
+    int public bal;
+    string public accountName;
 
     constructor() public{
         bal = 1;
@@ -17,5 +18,15 @@ contract Bank{
 
     function withdraw(int amt) public {
         bal = bal - amt;
+    }
+
+    function withdrawHighGas(int amt) public {
+        for (int i=0;i<amt;i++){
+            bal = bal - 1;
+        }
+    }
+
+    function setAccountName(string memory name) public{
+        accountName = name;
     }
 }
